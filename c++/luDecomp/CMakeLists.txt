@@ -12,3 +12,10 @@ file(GLOB SOURCES
 
 
 add_executable(${TARGET_NAME} ${SOURCES})
+# We need hello.h and the hello library
+#target_link_libraries(${TARGET_NAME}
+#    PRIVATE ${MPI_impi_LIBRARY})
+
+# Tell C++ compiler to use C++20 features. We don't actually use any of them.
+target_compile_features(${TARGET_NAME} PUBLIC cxx_std_14)
+#target_include_directories (${TARGET_NAME} PUBLIC ${MPI_CXX_INCLUDE_DIRS})
