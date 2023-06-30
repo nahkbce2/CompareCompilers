@@ -8,7 +8,9 @@
 #include <cstdio>
 #include <omp.h>
 #include <cassert>
-
+#ifndef _WIN32
+#include <unistd.h>
+#endif
 #include <limits>
 #ifdef __HBM__
 #include <hbwmalloc.h>

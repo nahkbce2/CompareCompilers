@@ -44,7 +44,8 @@ void LU_decomp_kij_vec(const int n, const int lda, double * A, double * scratch)
   }
 }
 
-
+#include <iostream>
+#include <omp.h>
 void LU_decomp_kij_opt(const int n, const int lda, double * A, double * scratch) {
   // LU decomposition without pivoting (Doolittle algorithm)
   // In-place decomposition of form A=LU
@@ -55,6 +56,7 @@ void LU_decomp_kij_opt(const int n, const int lda, double * A, double * scratch)
     const double recAkk = 1.0/A[k*lda + k];
 #pragma omp parallel for
     for (int i = k + 1; i < n; ++i) {
+      //printf("%d %d\n", omp_get_thread_num(), i);
       A[i*lda + k] = A[i*lda + k]*recAkk;
 #ifdef __PGI
 #pragma loop ivdep
