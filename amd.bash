@@ -1,7 +1,7 @@
 #! /bin/bash
 
 [[ -r /glb/apps/hpc/EasyBuild/Public/Lmod/etc/profile.d/z01_lmod-hpcti.sh ]] && . /glb/apps/hpc/EasyBuild/Public/Lmod/etc/profile.d/z01_lmod-hpcti.sh -n
-
+module load HpctiSoftwareStack/PRODUCTION
 module load CMake/3.23.1-GCCcore-11.3.0
 
 
@@ -13,11 +13,12 @@ do
         f) fullname=${OPTARG};;
     esac
 done
-echo "Username: $username";
+echo "Username: $comptype";
 echo "Age: $age";
 echo "Full Name: $fullname";
 
-if [ ${comptype}=="amd" ];then
+if [[ "${comptype}" == "amd" ]];then
+	echo "Using AMD Compilers AOCC"
 	module swap HpctiSoftwareStack/PRODUCTION HpctiSoftwareStack/ACCEPTANCE
 	module load AOCC/4.0.0-GCCcore-11.3.0
 	CC=clang CXX=clang++ cmake -DCMAKE_BUILD_TYPE=Release ../CompareCompilers/
