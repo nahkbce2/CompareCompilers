@@ -28,3 +28,4 @@ elif [[ "${comptype}" == "intel" ]];then
 fi
 
 cmake --build .
+./c++/luDecomp/luDecomp
