@@ -22,7 +22,9 @@ if [[ "${comptype}" == "amd" ]];then
 	module swap HpctiSoftwareStack/PRODUCTION HpctiSoftwareStack/ACCEPTANCE
 	module load AOCC/4.0.0-GCCcore-11.3.0
 	CC=clang CXX=clang++ cmake -DCMAKE_BUILD_TYPE=Release ../CompareCompilers/
+elif [[ "${comptype}" == "intel" ]];then
+	module load intel/2022a
+	CC=icx CXX=icpx cmake -DCMAKE_BUILD_TYPE=Release ../CompareCompilers/
 fi
-
 
 cmake --build .
