@@ -5,7 +5,7 @@ cmake_minimum_required(VERSION 3.11-3.18)
 project(
     CompilerCompare
     VERSION 0.1
-    DESCRIPTION "Computational Kernels for Comparing Compilers vendors")
+    DESCRIPTION "Computational Kernels for Comparing Compilers vendors: https://colfaxresearch.com/compiler-comparison/")
 
 
 option(BUILD_WITH_MPI_WRAPPERS "Build the mpi wrappers" OFF)
@@ -13,7 +13,7 @@ set(BLA "$ENV{I_MPI_ROOT}" )
 message (STATUS "Found MPI ... ${BLA}")
 include(FindMPI)
 
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -D__ALGORITHM__=KIJ_OPT")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -D__ALGORITHM__=KIJ_OPT_REG")
 
 if(BUILD_WITH_MPI_WRAPPERS)
     if (UNIX AND "${CMAKE_CXX_COMPILER_ID}" STREQUAL "Intel")

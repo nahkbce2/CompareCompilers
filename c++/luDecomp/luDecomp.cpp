@@ -11,6 +11,7 @@
 #ifndef _WIN32
 #include <unistd.h>
 #endif
+#include <limits.h>
 #include <limits>
 #ifdef __HBM__
 #include <hbwmalloc.h>
@@ -46,7 +47,9 @@
 /*****************************************************************************/
 
 void VerifyResult(const int n, const int lda, double* LU, double* refA) {
-
+  char hostname[HOST_NAME_MAX+1];
+  gethostname(hostname, HOST_NAME_MAX+1);
+  printf("HOSTNAME:%s \n",hostname);
   // Verifying that A=LU
 double *A, *L, *U;
 #ifdef __INTEL_COMPILER
