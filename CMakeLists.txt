@@ -13,8 +13,6 @@ set(BLA "$ENV{I_MPI_ROOT}" )
 message (STATUS "Found MPI ... ${BLA}")
 include(FindMPI)
 
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -D__ALGORITHM__=KIJ_OPT_REG")
-
 if(BUILD_WITH_MPI_WRAPPERS)
     if (UNIX AND "${CMAKE_CXX_COMPILER_ID}" STREQUAL "Intel")
         set(CMAKE_C_COMPILER ${BLA}/bin/mpiicc)
@@ -22,7 +20,7 @@ if(BUILD_WITH_MPI_WRAPPERS)
     elseif(WIN32)
         set(CMAKE_C_COMPILER ${BLA}\\bin\\mpicc.bat)
         set (CMAKE_CXX_COMPILER ${BLA}\\bin\\mpiicpc.bat)
-    #else()#for everything else uspe openmpi
+    #else()#for everything else use openmpi
     #    set(CMAKE_C_COMPILER $ENV{EBROOTOPENMPI}/bin/mpicc)
     #    set (CMAKE_CXX_COMPILER $ENV{EBROOTOPENMPI}/bin/mpic++)
     endif()

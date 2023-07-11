@@ -2,6 +2,7 @@
 #include <mathimf.h>
 #else
 #include <cmath>
+//#include <mathimf.h>
 #endif
 #include <stdlib.h>
 #include <malloc.h>
@@ -37,7 +38,7 @@
 #define SOLVE_OPT       3
 
 #ifndef __ALGORITHM__
-#define __ALGORITHM __ SOLVE_OPT
+#define __ALGORITHM__ SOLVE_OPT
 #endif
 
 /*****************************************************************************/

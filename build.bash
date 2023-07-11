@@ -14,9 +14,9 @@ do
         f) fullname=${OPTARG};;
     esac
 done
-echo "Username: $comptype";
-echo "Age: $age";
-echo "Full Name: $fullname";
+echo "CompilerName: $comptype";
+echo "IntelCompilerType: $age";
+echo "run: $fullname";
 
 if [[ "${comptype}" == "amd" ]];then
 	echo "Using AMD Compilers AOCC"
@@ -25,9 +25,17 @@ if [[ "${comptype}" == "amd" ]];then
 	module load OpenMPI/4.1.4-GCC-11.3.0
 	CC=clang CXX=clang++ cmake -DCMAKE_BUILD_TYPE=Release ../CompareCompilers/
 elif [[ "${comptype}" == "intel" ]];then
+	echo "Using Intel Compilers"
 	module load intel/2022a
-	CC=icx CXX=icpx cmake -DCMAKE_BUILD_TYPE=Release ../CompareCompilers/
+	if [[ "$age" != "llvm" ]];then
+	  CC=icc CXX=icpc cmake -DCMAKE_BUILD_TYPE=Release ../CompareCompilers/
+	else
+	  CC=icx CXX=icpx cmake -DCMAKE_BUILD_TYPE=Release ../CompareCompilers/
+        fi 
 fi
 
 cmake --build .
-./c++/luDecomp/luDecomp
+if [[ "$fullname" == "yes" ]];then
+#./c++/luDecomp/luDecomp
+./c++/jacobiSolve/JacobiSolve
+fi
