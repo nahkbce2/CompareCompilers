@@ -47,9 +47,11 @@
 /*****************************************************************************/
 
 void VerifyResult(const int n, const int lda, double* LU, double* refA) {
+#ifndef _WIN32
   char hostname[HOST_NAME_MAX+1];
   gethostname(hostname, HOST_NAME_MAX+1);
   printf("HOSTNAME:%s \n",hostname);
+#endif
   // Verifying that A=LU
 double *A, *L, *U;
 #ifdef __INTEL_COMPILER
