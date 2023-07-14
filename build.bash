@@ -31,7 +31,7 @@ elif [[ "${comptype}" == "intel" ]];then
 	  CC=icc CXX=icpc cmake -DCMAKE_BUILD_TYPE=Release ../CompareCompilers/
 	else
 	  CC=icx CXX=icpx cmake -DCMAKE_BUILD_TYPE=Release ../CompareCompilers/
-        fi 
+    fi 
 fi
 
 cmake --build .

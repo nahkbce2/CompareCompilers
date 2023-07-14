@@ -38,7 +38,7 @@
 #define BARE            5
 
 #ifndef __ALGORITHM__
-#define __ALGORITHM __ KIJ_OPT_REG
+#define __ALGORITHM__ KIJ_OPT_REG
 #endif
 #ifdef _WIN32
 #define posix_memalign(p, a, s) (((*(p)) = _aligned_malloc((s), (a))), *(p) ?0 :errno)

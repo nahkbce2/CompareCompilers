@@ -11,7 +11,8 @@ project(
 option(BUILD_WITH_MPI_WRAPPERS "Build the mpi wrappers" OFF)
 set(BLA "$ENV{I_MPI_ROOT}" )
 message (STATUS "Found MPI ... ${BLA}")
-include(FindMPI)
+#include(FindMPI)
+find_package(MPI REQUIRED)
 
 if(BUILD_WITH_MPI_WRAPPERS)
     if (UNIX AND "${CMAKE_CXX_COMPILER_ID}" STREQUAL "Intel")
